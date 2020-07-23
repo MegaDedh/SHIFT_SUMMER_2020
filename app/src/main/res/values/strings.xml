@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SHIFT_SUMMER_2020</string>
+    <string name="see_weather_list">Смотреть погоду в городах</string>
+
+    <string name="temperature_placeholder">Температура: %1$s</string>
+    <string name="humidity_placeholder">Влажность: %1$s</string>
+    <string name="wind_speed_placeholder">Скорость ветра: %1$s</string>
+
+
+
+</resources>
