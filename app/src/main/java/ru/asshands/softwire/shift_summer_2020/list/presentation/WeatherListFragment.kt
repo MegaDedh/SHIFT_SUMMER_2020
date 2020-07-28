@@ -1,4 +1,4 @@
-package ru.asshands.softwire.shift_summer_2020.fragments
+package ru.asshands.softwire.shift_summer_2020.list.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather_list.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.shift_summer_2020.models.CityWeather
-import ru.asshands.softwire.shift_summer_2020.models.WeatherParams
+import ru.asshands.softwire.shift_summer_2020.domain.entity.CityWeather
+import ru.asshands.softwire.shift_summer_2020.domain.entity.WeatherParams
+import ru.asshands.softwire.shift_summer_2020.list.presentation.WeatherAdapter
 
 class WeatherListFragment : Fragment() {
     private val cityWeather = mutableListOf<CityWeather>()
@@ -28,7 +29,10 @@ class WeatherListFragment : Fragment() {
 
 
         cities_list_fragment_recyclerView.adapter =
-            WeatherAdapter(cityWeather, view.context)
+            WeatherAdapter(
+                cityWeather,
+                view.context
+            )
 
     }
 
