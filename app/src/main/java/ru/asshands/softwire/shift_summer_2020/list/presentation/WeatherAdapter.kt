@@ -1,4 +1,4 @@
-package ru.asshands.softwire.shift_summer_2020.fragments
+package ru.asshands.softwire.shift_summer_2020.list.presentation
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_city.view.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.shift_summer_2020.models.CityWeather
+import ru.asshands.softwire.shift_summer_2020.domain.entity.CityWeather
 
 class WeatherAdapter(
 
@@ -46,7 +46,9 @@ class WeatherAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_city, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -8,7 +8,7 @@
     <!--mainFragment-->
     <fragment
         android:id="@+id/nav_mainFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.fragments.MainFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.main.presentation.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -23,7 +23,7 @@
     <!--weatherListFragment-->
     <fragment
         android:id="@+id/nav_weatherListFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.fragments.WeatherListFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.list.presentation.WeatherListFragment"
         android:label="fragment_weather_list"
         tools:layout="@layout/fragment_weather_list">
         <action
@@ -42,7 +42,7 @@
     <!--cityFragment-->
     <fragment
         android:id="@+id/nav_cityFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.fragments.CityFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.city.presentation.CityFragment"
         android:label="fragment_city"
         tools:layout="@layout/fragment_city">
     </fragment>

@@ -1,4 +1,4 @@
-package ru.asshands.softwire.shift_summer_2020.fragments
+package ru.asshands.softwire.shift_summer_2020.main.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
