@@ -24,8 +24,6 @@ class CityListAdapter(
     class ViewHolder(itemView: View, private val cityListener: (City) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
 
-
-
         fun bindView(item: City) {
             itemView.item_city_name.text = item.name
             itemView.item_city_temperature.text = "Темпратура ${item.weather.temperature}"
@@ -47,6 +45,7 @@ class CityListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = cityList[position]
+
         holder.bindView(item)
     }
 

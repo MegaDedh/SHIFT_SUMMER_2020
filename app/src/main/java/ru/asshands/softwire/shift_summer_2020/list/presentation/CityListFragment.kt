@@ -15,7 +15,7 @@ import ru.asshands.softwire.shift_summer_2020.R
 import ru.asshands.softwire.shift_summer_2020.domain.entity.City
 import ru.asshands.softwire.shift_summer_2020.list.di.CityListViewModelFactory
 
-class CityListFragment : Fragment() {
+class CityListFragment : Fragment(R.layout.fragment_weather_list) {
 
     private val viewModel: CityListViewModel by viewModels {
         CityListViewModelFactory()
@@ -24,11 +24,6 @@ class CityListFragment : Fragment() {
         CityListAdapter { city ->
             viewModel.cityClicked(city)
         }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_weather_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
