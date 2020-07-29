@@ -23,7 +23,7 @@
     <!--weatherListFragment-->
     <fragment
         android:id="@+id/nav_weatherListFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.list.presentation.WeatherListFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.list.presentation.CityListFragment"
         android:label="fragment_weather_list"
         tools:layout="@layout/fragment_weather_list">
         <action
@@ -36,13 +36,13 @@
             />
         <argument
             android:name="requestedDepart"
-            app:argType="ru.asshands.softwire.shift_summer_2020.models.CityWeather"/>
+            app:argType="ru.asshands.softwire.shift_summer_2020.domain.entity.City"/>
     </fragment>
 
     <!--cityFragment-->
     <fragment
         android:id="@+id/nav_cityFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.city.presentation.CityFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.city.presentation.CityDetailFragment"
         android:label="fragment_city"
         tools:layout="@layout/fragment_city">
     </fragment>

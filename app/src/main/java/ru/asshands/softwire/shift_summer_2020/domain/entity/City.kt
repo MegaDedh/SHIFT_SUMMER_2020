@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CityWeather(val name:String, val weather: WeatherParams) : Parcelable
+data class City(val name:String, val weather: Weather) : Parcelable

@@ -23,8 +23,5 @@ class MainFragment : Fragment() {
             val action = R.id.action_mainFragment_to_weatherListFragment
             findNavController().navigate(action)
         }
-
-
     }
-
 }

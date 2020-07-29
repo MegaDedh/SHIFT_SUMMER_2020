@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class WeatherParams(
+data class Weather(
     val temperature: Float,
     val humidity: Int,
     val windSpeed: Int
