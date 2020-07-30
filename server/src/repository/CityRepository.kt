@@ -1,11 +1,16 @@
 package ru.asshands.softwire.server.repository
 
-import ru.asshands.softwire.common.City
-import ru.asshands.softwire.common.Weather
+import org.jetbrains.exposed.sql.selectAll
+import ru.asshands.softwire.server.db.dbQuery
+import ru.asshands.softwire.server.db.table.City
+import ru.asshands.softwire.server.db.table.toCity
 
 class CityRepository {
-    fun getAll() =
-        listOf(
+    suspend fun getAll() =
+        dbQuery {
+            City.selectAll().map { it.toCity() }
+        }
+/*        listOf(
             City("Томск", Weather(20.6f, 70, 3)),
             City("Новосибирск", Weather(25.4f, 60, 5)),
             City("Москва", Weather(23.4f, 55, 7)),
@@ -18,5 +23,5 @@ class CityRepository {
             City("Владивосток", Weather(20.3f, 60, 20)),
             City("Тюмень", Weather(20.3f, 60, 20)),
             City("Самара", Weather(35.7f, 60, 9))
-        )
+        )*/
 }
