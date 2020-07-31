@@ -1,11 +1,11 @@
 package ru.asshands.softwire.shift_summer_2020.list.domain
 
-import ru.asshands.softwire.common.City
+import ru.asshands.softwire.common.CityWeather
 
 
 class GetCityUseCase(
     private val cityRepository: CityRepository
 ) {
 
-    operator fun invoke(): List<City> = cityRepository.getCity()
+    operator fun invoke(): List<CityWeather> = cityRepository.getCity()
 }

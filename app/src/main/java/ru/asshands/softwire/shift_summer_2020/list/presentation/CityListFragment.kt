@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather_list.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.common.City
+import ru.asshands.softwire.common.CityWeather
 import ru.asshands.softwire.shift_summer_2020.list.di.CityListViewModelFactory
 
 class CityListFragment : Fragment(R.layout.fragment_weather_list) {
@@ -34,11 +34,11 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
         initTrainsRecyclerView()
     }
 
-    private fun setCityList(cityList: List<City>) {
+    private fun setCityList(cityList: List<CityWeather>) {
         adapter.setCityList(cityList)
     }
 
-    private fun showCityDetails(city: City) {
+    private fun showCityDetails(city: CityWeather) {
         val bundle = bundleOf("city" to city)
         findNavController()
             .navigate(R.id.action_weatherListFragment_to_cityFragment, bundle)

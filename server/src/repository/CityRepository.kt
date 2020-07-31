@@ -5,13 +5,13 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import ru.asshands.softwire.common.CreateCityDto
 import ru.asshands.softwire.server.db.dbQuery
-import ru.asshands.softwire.server.db.table.Cities
+import ru.asshands.softwire.server.db.table.City
 import ru.asshands.softwire.server.db.table.toCity
 
 class CityRepository {
     suspend fun getAll() =
         dbQuery {
-            Cities.selectAll().map { it.toCity() }
+            City.selectAll().map { it.toCity() }
         }
 /*        listOf(
             City("Томск", Weather(20.6f, 70, 3)),
@@ -30,7 +30,7 @@ class CityRepository {
 
     suspend fun add(createCityDto: CreateCityDto){
         dbQuery {
-            Cities.insert { insertStatement ->
+            City.insert { insertStatement ->
                 insertStatement[name] = createCityDto.name
                 insertStatement[temperature] = createCityDto.temperature
             }
@@ -39,8 +39,8 @@ class CityRepository {
 
     suspend fun delete(id: Long) {
         dbQuery {
-            Cities.deleteWhere {
-                Cities.id.eq(id)
+            City.deleteWhere {
+                City.id.eq(id)
             }
         }
     }

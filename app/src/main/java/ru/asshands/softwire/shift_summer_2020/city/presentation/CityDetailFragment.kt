@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_city.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.common.City
+import ru.asshands.softwire.common.CityWeather
 
 class CityDetailFragment : Fragment() {
 
