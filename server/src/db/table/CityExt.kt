@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.ResultRow
 
 
 fun ResultRow.toCity() = City(
-    id = this[City.id],
-    name = this[City.name],
-    temperature = this[City.temperature]
+    id = this[Cities.id],
+    name = this[Cities.name],
+    temperature = this[Cities.temperature]
 )

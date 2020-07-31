@@ -2,13 +2,13 @@ package ru.asshands.softwire.server.repository
 
 import org.jetbrains.exposed.sql.selectAll
 import ru.asshands.softwire.server.db.dbQuery
-import ru.asshands.softwire.server.db.table.City
+import ru.asshands.softwire.server.db.table.Cities
 import ru.asshands.softwire.server.db.table.toCity
 
 class CityRepository {
     suspend fun getAll() =
         dbQuery {
-            City.selectAll().map { it.toCity() }
+            Cities.selectAll().map { it.toCity() }
         }
 /*        listOf(
             City("Томск", Weather(20.6f, 70, 3)),
