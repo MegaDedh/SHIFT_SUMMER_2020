@@ -9,7 +9,6 @@ import io.ktor.gson.*
 import io.ktor.features.*
 import ru.asshands.softwire.server.db.DatabaseFactory
 import ru.asshands.softwire.server.repository.CityRepository
-import ru.asshands.softwire.server.repository.NoteRepository
 import java.net.URI
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
@@ -35,18 +34,12 @@ fun Application.module(testing: Boolean = false) {
         init()
     }
 
-    //val repository = CityRepository()
-    val repository = NoteRepository()
-
     routing {
-        get("/notes") {
+        get("/city") {
             // call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
-
-            val notes = repository.getAll()
-            call.respond(notes)
-
-//            val city = repository.getAll()
-//            call.respond(city)
+            val repository: CityRepository = CityRepository()
+            val city = repository.getAll()
+            call.respond(city)
         }
 
 /*        get("/json/gson") {
