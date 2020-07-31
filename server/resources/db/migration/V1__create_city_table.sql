@@ -1,4 +1,4 @@
-create TABLE CITY (
+create TABLE CITIES (
     id serial primary key,
     name text,
     temperature integer
