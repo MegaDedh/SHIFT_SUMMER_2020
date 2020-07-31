@@ -20,7 +20,7 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         get("/city") {
-            //call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+            // call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
             val repository: CityRepository = CityRepository()
             val city = repository.getAll()
             call.respond(city)
