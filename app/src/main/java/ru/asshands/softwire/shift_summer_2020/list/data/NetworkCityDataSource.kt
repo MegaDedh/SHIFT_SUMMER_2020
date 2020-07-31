@@ -6,13 +6,15 @@ import ru.asshands.softwire.common.Weather
 
 interface NetworkCityDataSource {
 
-    fun getCity(): List<CityWeather>
+    suspend fun getCity(): List<CityWeather>
 }
 
-class NetworkCityDataSourceImpl : NetworkCityDataSource {
+class NetworkCityDataSourceImpl(private val api: CityWeatherApi) : NetworkCityDataSource {
 
-    override fun getCity(): List<CityWeather> =
-        listOf(
+    override suspend fun getCity(): List<CityWeather> = api.getAll()
+
+}
+        /*listOf(
             CityWeather(1,"Томск", 20),
             CityWeather(2,"Новосибирск", 25),
             CityWeather(3,"Москва", 23),
@@ -20,6 +22,4 @@ class NetworkCityDataSourceImpl : NetworkCityDataSource {
             CityWeather(5,"Сургут", -45),
             CityWeather(6,"Воркута", -45),
             CityWeather(7,"Магадан", -55),
-            CityWeather(8,"Якутск", -60))
-
-}
+            CityWeather(8,"Якутск", -60))*/

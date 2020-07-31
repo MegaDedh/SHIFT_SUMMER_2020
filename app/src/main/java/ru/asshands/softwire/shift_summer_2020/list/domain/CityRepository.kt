@@ -5,5 +5,5 @@ import ru.asshands.softwire.common.CityWeather
 
 interface CityRepository {
 
-    fun getCity() : List<CityWeather>
+    suspend fun getCity() : List<CityWeather>
 }

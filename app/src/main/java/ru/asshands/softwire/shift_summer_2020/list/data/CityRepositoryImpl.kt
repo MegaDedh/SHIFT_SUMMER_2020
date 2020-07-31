@@ -7,5 +7,5 @@ class CityRepositoryImpl(
     private val networkCityDataSource: NetworkCityDataSource
 ) : CityRepository {
 
-    override fun getCity(): List<CityWeather> = networkCityDataSource.getCity()
+    override suspend fun getCity(): List<CityWeather> = networkCityDataSource.getCity()
 }

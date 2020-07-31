@@ -7,5 +7,5 @@ class GetCityUseCase(
     private val cityRepository: CityRepository
 ) {
 
-    operator fun invoke(): List<CityWeather> = cityRepository.getCity()
+    suspend operator fun invoke(): List<CityWeather> = cityRepository.getCity()
 }
