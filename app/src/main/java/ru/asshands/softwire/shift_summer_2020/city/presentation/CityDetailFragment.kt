@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_city.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.shift_summer_2020.domain.entity.City
+import ru.asshands.softwire.common.City
 
 class CityDetailFragment : Fragment() {
 
@@ -21,7 +21,7 @@ class CityDetailFragment : Fragment() {
 
         val ctx = activity?.applicationContext ?: throw error("Fail get applicationContext")
         val res = ctx.resources
-        val city = checkNotNull(arguments?.getParcelable<City>("city"))
+        val city = checkNotNull(arguments?.getSerializable("city"))
 
         fragment_city_name.text = city.name
         fragment_city_temperature.text = res.getString(R.string.temperature_placeholder, city.weather.temperature.toString())

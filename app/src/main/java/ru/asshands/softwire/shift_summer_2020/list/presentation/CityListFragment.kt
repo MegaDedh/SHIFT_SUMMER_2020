@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather_list.*
 import ru.asshands.softwire.shift_summer_2020.R
-import ru.asshands.softwire.shift_summer_2020.domain.entity.City
+import ru.asshands.softwire.common.City
 import ru.asshands.softwire.shift_summer_2020.list.di.CityListViewModelFactory
 
 class CityListFragment : Fragment(R.layout.fragment_weather_list) {

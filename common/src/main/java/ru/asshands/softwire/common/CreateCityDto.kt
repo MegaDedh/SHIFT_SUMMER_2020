@@ -2,9 +2,7 @@ package ru.asshands.softwire.common
 
 import java.io.Serializable
 
-
-data class City(
-    val id: Long,
+data class CreateCityDto(
     val name:String,
     val temperature: Int
 ) : Serializable
