@@ -7,6 +7,7 @@ import io.ktor.routing.*
 import io.ktor.http.*
 import io.ktor.gson.*
 import io.ktor.features.*
+import ru.asshands.softwire.common.CreateCityDto
 import ru.asshands.softwire.server.db.DatabaseFactory
 import ru.asshands.softwire.server.repository.CityRepository
 import java.net.URI
@@ -34,17 +35,44 @@ fun Application.module(testing: Boolean = false) {
         init()
     }
 
-    routing {
-        get("/city") {
-            // call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
-            val repository: CityRepository = CityRepository()
-            val city = repository.getAll()
-            call.respond(city)
-        }
+    val repository = CityRepository()
 
-/*        get("/json/gson") {
-            call.respond(mapOf("hello" to "world"))
-        }*/
+
+    routing {
+        route("/city") {
+            get {
+                val city = repository.getAll()
+                call.respond(city)
+            }
+            post {
+                val city = call.receive<CreateCityDto>()
+                repository.add(city)
+                call.respond(HttpStatusCode.OK)
+            }
+            delete {
+                val id = call.request.queryParameters["id"]?.toLong()
+                if (id == null) {
+                    call.respond(HttpStatusCode.NotFound)
+                } else {
+                    repository.delete(id)
+                    call.respond(HttpStatusCode.OK)
+                }
+            }
+        }
     }
 }
 
+
+/*
+старый
+routing {
+    get("/city") {
+        // call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+        val city = repository.getAll()
+        call.respond(city)
+    }
+
+    get("/json/gson") {
+        call.respond(mapOf("hello" to "world"))
+    }
+}*/
