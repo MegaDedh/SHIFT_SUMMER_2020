@@ -1,6 +1,9 @@
 package ru.asshands.softwire.server.repository
 
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
+import ru.asshands.softwire.common.CreateCityDto
 import ru.asshands.softwire.server.db.dbQuery
 import ru.asshands.softwire.server.db.table.Cities
 import ru.asshands.softwire.server.db.table.toCity
@@ -24,4 +27,21 @@ class CityRepository {
             City("Тюмень", Weather(20.3f, 60, 20)),
             City("Самара", Weather(35.7f, 60, 9))
         )*/
+
+    suspend fun add(createCityDto: CreateCityDto){
+        dbQuery {
+            Cities.insert { insertStatement ->
+                insertStatement[name] = createCityDto.name
+                insertStatement[temperature] = createCityDto.temperature
+            }
+        }
+    }
+
+    suspend fun delete(id: Long) {
+        dbQuery {
+            Cities.deleteWhere {
+                Cities.id.eq(id)
+            }
+        }
+    }
 }
