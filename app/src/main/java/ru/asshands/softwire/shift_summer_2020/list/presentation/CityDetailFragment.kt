@@ -1,4 +1,4 @@
-package ru.asshands.softwire.shift_summer_2020.city.presentation
+package ru.asshands.softwire.shift_summer_2020.list.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,11 +21,11 @@ class CityDetailFragment : Fragment() {
 
         val ctx = activity?.applicationContext ?: throw error("Fail get applicationContext")
         val res = ctx.resources
-        val city = checkNotNull(arguments?.getSerializable("city"))
+        val city = checkNotNull(arguments?.getSerializable("city")) as CityWeather
 
         fragment_city_name.text = city.name
-        fragment_city_temperature.text = res.getString(R.string.temperature_placeholder, city.weather.temperature.toString())
-        fragment_city_humidity.text = res.getString(R.string.humidity_placeholder, city.weather.humidity.toString())
-        fragment_city_wind_speed.text = res.getString(R.string.wind_speed_placeholder, city.weather.windSpeed.toString())
+        fragment_city_temperature.text = res.getString(R.string.temperature_placeholder, city.temperature.toString())
+/*        fragment_city_humidity.text = res.getString(R.string.humidity_placeholder, city.weather.humidity.toString())
+        fragment_city_wind_speed.text = res.getString(R.string.wind_speed_placeholder, city.weather.windSpeed.toString())*/
     }
 }

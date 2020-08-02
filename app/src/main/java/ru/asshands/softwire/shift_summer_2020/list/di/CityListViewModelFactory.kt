@@ -2,8 +2,13 @@ package ru.asshands.softwire.shift_summer_2020.list.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 import ru.asshands.softwire.shift_summer_2020.list.data.CityRepositoryImpl
+import ru.asshands.softwire.shift_summer_2020.list.data.CityWeatherApi
 import ru.asshands.softwire.shift_summer_2020.list.data.NetworkCityDataSourceImpl
 import ru.asshands.softwire.shift_summer_2020.list.domain.GetCityUseCase
 import ru.asshands.softwire.shift_summer_2020.list.presentation.CityListViewModel
@@ -24,7 +29,7 @@ class CityListViewModelFactory : ViewModelProvider.Factory {
                 .client(client)
                 .build()
 
-            val api = retrofit.create(NotesApi::class.java)
+            val api = retrofit.create(CityWeatherApi::class.java)
 
 
             val networkDataSource = NetworkCityDataSourceImpl(api)

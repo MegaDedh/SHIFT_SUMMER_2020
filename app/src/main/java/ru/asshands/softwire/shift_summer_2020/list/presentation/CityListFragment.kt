@@ -1,9 +1,7 @@
 package ru.asshands.softwire.shift_summer_2020.list.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -32,10 +30,15 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
         viewModel.cityClickedEvent.observe(this, Observer(::showCityDetails))
 
         initTrainsRecyclerView()
+
+        fragment_weather_list_add_city_fab.setOnClickListener {
+            addCity()
+        }
     }
 
     private fun setCityList(cityList: List<CityWeather>) {
         adapter.setCityList(cityList)
+        fragment_weather_list_list_progress_bar.visibility = View.GONE
     }
 
     private fun showCityDetails(city: CityWeather) {
@@ -44,9 +47,14 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
             .navigate(R.id.action_weatherListFragment_to_cityFragment, bundle)
     }
 
+    private fun addCity() {
+        findNavController()
+            .navigate(R.id.action_weatherListFragment_to_cityAddFragment)
+    }
+
     private fun initTrainsRecyclerView() {
-        cities_list_fragment_recyclerView.layoutManager = LinearLayoutManager(context)
-        cities_list_fragment_recyclerView.adapter = adapter
+        fragment_weather_list_recyclerView.layoutManager = LinearLayoutManager(context)
+        fragment_weather_list_recyclerView.adapter = adapter
     }
 
 }

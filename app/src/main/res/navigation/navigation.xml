@@ -34,17 +34,32 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             />
-        <argument
-            android:name="requestedDepart"
-            app:argType="ru.asshands.softwire.shift_summer_2020.domain.entity.City"/>
+
+        <action
+            android:id="@+id/action_weatherListFragment_to_cityAddFragment"
+            app:destination="@id/nav_cityAddFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
     </fragment>
 
     <!--cityFragment-->
     <fragment
         android:id="@+id/nav_cityFragment"
-        android:name="ru.asshands.softwire.shift_summer_2020.city.presentation.CityDetailFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.list.presentation.CityDetailFragment"
         android:label="fragment_city"
         tools:layout="@layout/fragment_city">
+    </fragment>
+
+    <!--CityAddFragment-->
+    <fragment
+        android:id="@+id/nav_cityAddFragment"
+        android:name="ru.asshands.softwire.shift_summer_2020.list.presentation.CityAddFragment"
+        android:label="fragment_add_city"
+        tools:layout="@layout/fragment_add_city">
     </fragment>
 
 

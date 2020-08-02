@@ -5,7 +5,8 @@
     <string name="temperature_placeholder">Температура: %1$s</string>
     <string name="humidity_placeholder">Влажность: %1$s</string>
     <string name="wind_speed_placeholder">Скорость ветра: %1$s</string>
-
+    <string name="fragment_add_city_name_hint">Город</string>
+    <string name="fragment_add_city_temperature_hint">Температура</string>
 
 
 </resources>
