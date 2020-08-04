@@ -7,19 +7,15 @@ import ru.asshands.softwire.common.Weather
 interface NetworkCityDataSource {
 
     suspend fun getCity(): List<CityWeather>
+
+    suspend fun getPage(start: Long, size: Int): List<CityWeather>
 }
 
 class NetworkCityDataSourceImpl(private val api: CityWeatherApi) : NetworkCityDataSource {
 
     override suspend fun getCity(): List<CityWeather> = api.getAll()
 
+    override suspend fun getPage(start: Long, size: Int) =
+        api.getPage(start, size)
+
 }
-        /*listOf(
-            CityWeather(1,"Томск", 20),
-            CityWeather(2,"Новосибирск", 25),
-            CityWeather(3,"Москва", 23),
-            CityWeather(4,"Краснодар", 41),
-            CityWeather(5,"Сургут", -45),
-            CityWeather(6,"Воркута", -45),
-            CityWeather(7,"Магадан", -55),
-            CityWeather(8,"Якутск", -60))*/

@@ -3,6 +3,7 @@ package ru.asshands.softwire.shift_summer_2020.list.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_city.view.*
 import ru.asshands.softwire.shift_summer_2020.R
@@ -10,16 +11,17 @@ import ru.asshands.softwire.common.CityWeather
 import java.util.*
 
 class CityListAdapter(
+    diffUtilCallback: CityDiffUtilCallback,
     private val clickListener: (CityWeather) -> Unit
-) : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
+) : PagedListAdapter<CityWeather, CityListAdapter.ViewHolder>(diffUtilCallback) {
 
-    private val cityList: MutableList<CityWeather> = LinkedList()
-
-    fun setCityList(newCity: List<CityWeather>) {
-        cityList.clear()
-        cityList.addAll(newCity)
-        notifyDataSetChanged()
-    }
+//    old version:
+//    private val cityList: MutableList<CityWeather> = LinkedList()
+//    fun setCityList(newCity: List<CityWeather>) {
+//        cityList.clear()
+//        cityList.addAll(newCity)
+//        notifyDataSetChanged()
+//    }
 
     class ViewHolder(itemView: View, private val cityListener: (CityWeather) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
@@ -44,13 +46,12 @@ class CityListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = cityList[position]
 
-        holder.bindView(item)
+        getItem(position)?.let { holder.bindView(it) }
     }
 
-    override fun getItemCount(): Int {
-        return cityList.size
-    }
+//    override fun getItemCount(): Int {
+//        return cityList.size
+//    }
 
 }

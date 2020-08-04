@@ -34,9 +34,8 @@ class CityListViewModelFactory : ViewModelProvider.Factory {
 
             val networkDataSource = NetworkCityDataSourceImpl(api)
             val cityRepository = CityRepositoryImpl(networkDataSource)
-            val getCityUseCase = GetCityUseCase(cityRepository)
 
-            return CityListViewModel(getCityUseCase) as T
+            return CityListViewModel(cityRepository) as T
         } else {
             error("Unexpected class $modelClass")
         }

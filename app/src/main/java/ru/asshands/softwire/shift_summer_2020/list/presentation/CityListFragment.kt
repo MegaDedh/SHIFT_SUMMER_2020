@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather_list.*
 import ru.asshands.softwire.shift_summer_2020.R
@@ -19,14 +20,12 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
         CityListViewModelFactory()
     }
     private val adapter =
-        CityListAdapter { city ->
+        CityListAdapter(CityDiffUtilCallback()) { city ->
             viewModel.cityClicked(city)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.city.observe(this, Observer(::setCityList))
         viewModel.cityClickedEvent.observe(this, Observer(::showCityDetails))
 
         initTrainsRecyclerView()
@@ -36,8 +35,9 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
         }
     }
 
-    private fun setCityList(cityList: List<CityWeather>) {
-        adapter.setCityList(cityList)
+    private fun setCityList(cityList: PagedList<CityWeather>) {
+        adapter.submitList(cityList)
+        fragment_weather_list_recyclerView.adapter = adapter
         fragment_weather_list_list_progress_bar.visibility = View.GONE
     }
 
@@ -54,7 +54,8 @@ class CityListFragment : Fragment(R.layout.fragment_weather_list) {
 
     private fun initTrainsRecyclerView() {
         fragment_weather_list_recyclerView.layoutManager = LinearLayoutManager(context)
-        fragment_weather_list_recyclerView.adapter = adapter
+                viewModel.city.observe(this, Observer(::setCityList))
+
     }
 
 }

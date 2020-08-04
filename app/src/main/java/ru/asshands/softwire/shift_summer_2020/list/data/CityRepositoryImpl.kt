@@ -8,6 +8,7 @@ class CityRepositoryImpl(
 ) : CityRepository {
 
     override suspend fun getCity(): List<CityWeather> = networkCityDataSource.getCity()
+    override suspend fun getPage(start: Long, size:Int): List<CityWeather> = networkCityDataSource.getPage(start, size)
     override suspend fun addCity(name: String, temperature: Int) {
         TODO("fun addCityNot yet implemented")
     }
