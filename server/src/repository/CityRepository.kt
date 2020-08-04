@@ -2,6 +2,7 @@ package ru.asshands.softwire.server.repository
 
 import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import ru.asshands.softwire.common.CreateCityDto
 import ru.asshands.softwire.server.db.dbQuery
