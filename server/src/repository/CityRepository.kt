@@ -13,6 +13,12 @@ class CityRepository {
         dbQuery {
             City.selectAll().map { it.toCity() }
         }
+
+    suspend fun getPage(start: Long, size: Int) =
+        dbQuery {
+            City.select { City.id.greater(start) }
+                .limit(size).map { it.toCity() }
+        }
 /*        listOf(
             City("Томск", Weather(20.6f, 70, 3)),
             City("Новосибирск", Weather(25.4f, 60, 5)),

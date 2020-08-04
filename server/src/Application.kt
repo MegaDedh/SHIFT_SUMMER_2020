@@ -43,8 +43,15 @@ fun Application.module(testing: Boolean = false) {
     routing {
         route("/city") {
             get {
+                val start = call.request.queryParameters["start"]?.toLong()
+                val size = call.request.queryParameters["size"]?.toInt()
+                if (start == null || size == null){
                 val city = repository.getAll()
                 call.respond(city)
+                } else {
+                    val city = repository.getPage(start, size)
+                    call.respond(city)
+                }
             }
             post {
                 val city = call.receive<CreateCityDto>()
